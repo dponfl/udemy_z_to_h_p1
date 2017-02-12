@@ -2,7 +2,7 @@
 
 (function () {
 
-  angular.module('Project', [
+  /*angular.module('Project1', [
     'ngRoute',
     'ngResource'
   ]).config(ProjectConfig);
@@ -12,7 +12,6 @@
     $routeProvider
       .when('/', {
       templateUrl: 'templates/view/home.html',
-      controller: 'HomeController'
     })
       .when('/test', {
         templateUrl: 'templates/view/test.html'
@@ -25,7 +24,9 @@
     });
 
     $locationProvider.hashPrefix('');
-  }
+  }*/
+
+  angular.module('Project1', []);
 
 
 })();
