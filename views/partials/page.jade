@@ -15,6 +15,18 @@ div(data-ng-controller='MinMaxCtrl').container.main-content
       label(for='email') Email
       input(type='email', data-ng-model='formModel.email')#email.form-control
     .form-group
+      label(for='username') Username
+      input(type='text', data-ng-model='formModel.username')#username.form-control
+    .form-group
+      label(for='age') Age
+      input(type='number', data-ng-model='formModel.age')#age.form-control
+    .form-group
+      label(for='sex') Username
+      select(name='sex', data-ng-model='formModel.sex')#sex.form-control
+        option(value='') Please Choose
+        option(value='male') Male
+        option(value='female') Female
+    .form-group
       label(for='password') Password
       input(type='password', data-ng-model='formModel.password')#password.form-control
     .form-group
