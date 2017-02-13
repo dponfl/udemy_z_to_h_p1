@@ -26,7 +26,7 @@
     $locationProvider.hashPrefix('');
   }*/
 
-  angular.module('Project1', []);
+  angular.module('minmax', []);
 
 
 })();

@@ -1,11 +1,23 @@
 //
    Created by DSch on 09.02.2017.
 
-.container(data-ng-init='title="CodeCraft"; awesome = true;')
-  h1 {{ title }} is Awesome: {{ awesome }}
+nav.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      a(href='/').navbar-brand Controllers
 
+div(data-ng-controller='MinMaxCtrl').container.main-content
   .form
     .form-group
-      input(type='text', data-ng-model='title').form-control
+      label(for='name') Name
+      input(type='text', data-ng-model='formModel.name')#name.form-control
     .form-group
-      input(type='checkbox', data-ng-model='awesome').form-control
+      label(for='email') Email
+      input(type='email', data-ng-model='formModel.email')#email.form-control
+    .form-group
+      label(for='password') Password
+      input(type='password', data-ng-model='formModel.password')#password.form-control
+    .form-group
+      button(data-ng-click='onSubmit()').btn.btn-primary Register
+
+  pre {{formModel | json}}
