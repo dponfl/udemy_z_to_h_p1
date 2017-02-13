@@ -34,7 +34,8 @@ module.exports.routes = {
 
   '/': {
     view: 'index'
-  }
+  },
+  'POST /test': 'PostController.test'
 
   /***************************************************************************
   *                                                                          *

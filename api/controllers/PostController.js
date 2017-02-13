@@ -6,6 +6,8 @@
  */
 
 module.exports = {
-
+  test: function (req, res) {
+    return res.ok({result: req.allParams()});
+  }
 };
 
