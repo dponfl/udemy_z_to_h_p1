@@ -7,7 +7,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
       a(href='/').navbar-brand Form Validation - Part 1
 
 div(data-ng-controller='MinMaxCtrl').container.main-content
-  div(data-ng-submit='onSubmit()').form
+  form(data-ng-submit='onSubmit()').form
     .form-group
       label(for='name') Name
       input(type='text', data-ng-model='formModel.name')#name.form-control
