@@ -18,7 +18,6 @@ function MinMaxCtrl($scope, $http) {
     }
     else {
       console.log('Invalid form!');
-      $scope.emailValid = false;
     }
 
     function successCb(data) {
