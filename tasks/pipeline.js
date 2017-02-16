@@ -53,7 +53,7 @@ var jsFilesToInject = [
   'js/dependencies/**/*.js',
 
   // Load application modules
-  'js/app/**/module.js',
+  'js/app/**/main.js',
 
   // Load other application files
   'js/app/**/*.js',

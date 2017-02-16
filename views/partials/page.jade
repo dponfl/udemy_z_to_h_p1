@@ -6,4 +6,15 @@ nav.navbar.navbar-inverse.navbar-fixed-top
     .navbar-header
       a(href='/').navbar-brand List of Things
 
-.container.main-content
+div(data-ng-controller='PersonsController').container.main-content
+  table.table.table-bordered
+    tr
+      th
+      th Name
+      th Email
+      th Birthday
+    tr(data-ng-repeat='person in persons')
+      td(data-ng-bind= '$index + 1')
+      td(data-ng-bind='person.name')
+      td(data-ng-bind='person.email')
+      td(data-ng-bind='person.birthdate | date: "longDate" ')
