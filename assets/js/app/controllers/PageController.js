@@ -6,28 +6,32 @@ angular.module('minmax')
 MinMaxCtrl.$inject = ['$scope', '$http'];
 function MinMaxCtrl($scope, $http) {
   $scope.formModel = {};
+  $scope.submitting = false;
 
-  $scope.onSubmit = function (valid) {
-    if (valid) {
-      console.log("Hey, I'm submitted!");
-      console.dir($scope.formModel);
+  $scope.onSubmit = function () {
+    $scope.submitting = true;
+    console.log("Hey, I'm submitted!");
+    console.dir($scope.formModel);
 
-      // $http.post('https://minmax-server.herokuapp.com/register/', $scope.formModel)
+    $http.post('https://minmax-server.herokuapp.com/register/', $scope.formModel)
+    // $http.post('http://localhost:1337/test', $scope.formModel)
+      .then(successCb, errorCb);
+
+/*
+    setTimeout(function () {
       $http.post('http://localhost:1337/test', $scope.formModel)
         .then(successCb, errorCb);
-    }
-    else {
-      console.log('Invalid form!');
-    }
+    }, 3000);
+*/
 
-    function successCb(data) {
+    function successCb() {
+      $scope.submitting = false;
       console.log(':)');
-      console.dir(data);
     }
 
-    function errorCb(data) {
+    function errorCb() {
+      $scope.submitting = false;
       console.log(':(');
-      console.dir(data);
     }
   }
 }

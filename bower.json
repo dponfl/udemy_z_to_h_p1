@@ -1,12 +1,12 @@
 {
-  "name": "Project",
+  "name": "z-to-h project",
   "description": "a Sails application",
   "main": "app.js",
   "authors": [
     "Dmitry Ponomarev dponfl@gmail.com"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/dponfl/angular-setup",
+  "homepage": "https://github.com/dponfl/udemy_z_to_h_p1",
   "private": true,
   "ignore": [
     "**/.*",
@@ -19,6 +19,8 @@
     "bootstrap": "^3.3.7",
     "angular": "^1.6.2",
     "angular-route": "^1.6.2",
-    "angular-resource": "^1.6.2"
+    "angular-resource": "^1.6.2",
+    "angular-auto-validate": "^1.19.6",
+    "angular-ladda": "^0.4.3"
   }
 }

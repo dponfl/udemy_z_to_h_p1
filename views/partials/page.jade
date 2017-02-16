@@ -7,44 +7,69 @@ nav.navbar.navbar-inverse.navbar-fixed-top
       a(href='/').navbar-brand Form Validation - Part 1
 
 div(data-ng-controller='MinMaxCtrl').container.main-content
-  form(data-ng-submit='onSubmit(theForm.$valid)', novalidate='novalidate', name='theForm').form
+  form(data-ng-submit='onSubmit()',
+    novalidate='novalidate').form
 
     .form-group
       label(for='name').control-label Name
-      input(type='text', data-ng-model='formModel.name')#name.form-control
+      input(type='text',
+        data-ng-model='formModel.name',
+        name='name',
+        required='required')#name.form-control
 
-    div(data-ng-class='{"has-error":!theForm.email.$valid && (!theForm.$pristine || theForm.$submitted), "has-success":theForm.email.$valid && !theForm.$pristine}').form-group
+    .form-group
       label(for='email').control-label Email
-      input(type='email', data-ng-model='formModel.email',
-        required='required', name='email')#email.form-control
-      div(data-ng-class='{"tooltip-visible":theForm.email.$error.required && (!theForm.$pristine || theForm.$submitted)}').tooltip.bottom
-        .tooltip-arrow
-        .tooltip-inner This field is required
-      div(data-ng-class='{"tooltip-visible":theForm.email.$error.email && (!theForm.$pristine || theForm.$submitted)}').tooltip.bottom
-        .tooltip-arrow
-        .tooltip-inner Please enter a correct email
+      input(type='email',
+        data-ng-model='formModel.email',
+        required='required',
+        name='email')#email.form-control
 
     .form-group
       label(for='username').control-label Username
-      input(type='text', data-ng-model='formModel.username')#username.form-control
+      input(type='text',
+        data-ng-model='formModel.username',
+        name='username',
+        required='required',
+        data-ng-pattern='/^[A-Za-z0-9_]{1,32}$/',
+        data-ng-minlength='7',
+        data-ng-pattern-err-type='badUsername',
+        data-ng-minlength-err-type='tooShortUsername')#username.form-control
 
     .form-group
       label(for='age').control-label Age
-      input(type='number', data-ng-model='formModel.age')#age.form-control
+      input(type='number',
+        data-ng-model='formModel.age',
+        name='age',
+        required='required',
+        min='18',
+        max='250',
+        data-ng-min-err-type='tooYoung',
+        data-ng-max-err-type='tooOld')#age.form-control
 
     .form-group
       label(for='sex').control-label Sex
-      select(name='sex', data-ng-model='formModel.sex')#sex.form-control
+      select(data-ng-model='formModel.sex',
+        name='sex',
+        required='required')#sex.form-control
         option(value='') Please Choose
         option(value='male') Male
         option(value='female') Female
 
     .form-group
       label(for='password').control-label Password
-      input(type='password', data-ng-model='formModel.password')#password.form-control
+      input(type='password',
+        data-ng-model='formModel.password',
+        name='password',
+        required='required',
+        data-ng-minlength='10',
+        data-ng-minlength-err-type='pwTooShort')#password.form-control
 
     .form-group
-      button(type='submit').btn.btn-primary Register
+      button(type='submit',
+        data-ladda='submitting',
+        data-style='expand-right').btn.btn-primary
+          span(data-ng-show='submitting') Registering...
+          span(data-ng-show='!submitting') Register
 
   //pre {{formModel | json}}
-  pre {{theForm | json}}
+  pre {{formModel | json}}

@@ -19,6 +19,7 @@
 var cssFilesToInject = [
   'vendor/bootstrap/dist/css/bootstrap.css',
   'vendor/bootstrap/dist/css/bootstrap-theme.css',
+  'vendor/ladda/dist/ladda-themeless.min.css',
   'styles/**/*.css'
 ];
 
@@ -41,6 +42,10 @@ var jsFilesToInject = [
   'vendor/angular/angular.js',
   'vendor/angular-resource/angular-resource.js',
   'vendor/angular-route/angular-route.js',
+  'vendor/angular-auto-validate/dist/jcs-auto-validate.js',
+  'vendor/ladda/js/spin.js',
+  'vendor/ladda/js/ladda.js',
+  'vendor/angular-ladda/dist/angular-ladda.js',
 
   // Load sails.io before everything else
   'js/dependencies/sails.io.js',
