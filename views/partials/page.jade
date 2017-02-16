@@ -9,6 +9,15 @@ nav.navbar.navbar-inverse.navbar-fixed-top
 div(data-ng-controller='PersonsController').container.main-content
 
   .row
+    .col-sm-12
+      form.form-inline.well.well-sm
+        span.glyphicon.glyphicon-search
+        .form-group
+          input(type='text',
+            placeholder='Search name...',
+            data-ng-model='search').form-control#name
+
+  .row
     .col-sm-8
       table.table.table-bordered
         tr
@@ -16,7 +25,7 @@ div(data-ng-controller='PersonsController').container.main-content
           th Name
           th Email
           th Birthday
-        tr(data-ng-repeat='person in persons',
+        tr(data-ng-repeat='person in persons | filter:sensitiveSearch',
         data-ng-style='{"background-color": ($index == selectedIndex ? "lightgrey" : "") }',
         data-ng-click='selectPerson(person, $index)')
           td(data-ng-bind= '$index + 1')
@@ -42,3 +51,5 @@ div(data-ng-controller='PersonsController').container.main-content
               dd(data-ng-bind='selectedPerson.city')
             dt Country
               dd(data-ng-bind='selectedPerson.country')
+
+      pre {{search}}
