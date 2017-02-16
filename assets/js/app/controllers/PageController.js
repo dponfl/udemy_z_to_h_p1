@@ -6,9 +6,11 @@ angular.module('codecraft')
 PersonsController.$inject = ['$scope'];
 function PersonsController($scope) {
   $scope.selectedIndex = null;
+  $scope.selectesPerson = null;
 
-  $scope.selectPerson = function (index) {
+  $scope.selectPerson = function (person, index) {
     $scope.selectedIndex = index;
+    $scope.selectedPerson = person;
   };
 
 
