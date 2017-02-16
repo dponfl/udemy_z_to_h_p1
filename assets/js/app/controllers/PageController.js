@@ -5,6 +5,13 @@ angular.module('codecraft')
 
 PersonsController.$inject = ['$scope'];
 function PersonsController($scope) {
+  $scope.selectedIndex = null;
+
+  $scope.selectPerson = function (index) {
+    $scope.selectedIndex = index;
+  };
+
+
   $scope.persons = [
     {
       "name": "Gregory Huffman",
