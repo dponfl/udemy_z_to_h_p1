@@ -7,11 +7,10 @@ PersonsController.$inject = ['$scope'];
 function PersonsController($scope) {
 
   $scope.search = '';
-  $scope.selectedIndex = null;
+  $scope.order = 'email';
   $scope.selectesPerson = null;
 
-  $scope.selectPerson = function (person, index) {
-    $scope.selectedIndex = index;
+  $scope.selectPerson = function (person) {
     $scope.selectedPerson = person;
   };
 
