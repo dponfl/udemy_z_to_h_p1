@@ -36,7 +36,14 @@ module.exports = function(grunt) {
         cwd: '.tmp/public',
         src: ['**/*'],
         dest: 'www'
-      }]
+      },
+        {
+          expand: true,
+          cwd: './assets',
+          src: ['**/fonts/*'],
+          dest: '.tmp/public/fonts',
+          flatten: true
+        }]
     }
   });
 
