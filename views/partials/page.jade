@@ -39,9 +39,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                 span(data-ng-click='order = "email"').glyphicon.glyphicon-menu-up
                 span(data-ng-click='order = "-email"').glyphicon.glyphicon-menu-down
               th Birthday
-            tr(data-ng-repeat='person in filteredPersons = (persons | filter:sensitiveSearch | orderBy: order)',
-            data-ng-style='{"background-color": (person == selectedPerson ? "lightgrey" : "") }',
-            data-ng-click='selectPerson(person)')
+            tr(data-ng-repeat='person in filteredPersons = (contacts.persons | filter:sensitiveSearch | orderBy: order)',
+            data-ng-style='{"background-color": (person == contacts.selectedPerson ? "lightgrey" : "") }',
+            data-ng-click='contacts.selectedPerson = person')
               td(data-ng-bind= '$index + 1')
               td(data-ng-bind='person.name')
               td(data-ng-bind='person.email')
@@ -58,18 +58,18 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         .panel-body
           dl
             dt Name
-              dd(data-ng-bind='selectedPerson.name')
+              dd(data-ng-bind='contacts.selectedPerson.name')
             dt Email
-              dd(data-ng-bind='selectedPerson.email')
+              dd(data-ng-bind='contacts.selectedPerson.email')
             dt Birthday
-              dd(data-ng-bind='selectedPerson.birthdate | date:"longDate"')
+              dd(data-ng-bind='contacts.selectedPerson.birthdate | date:"longDate"')
             dt Phone
-              dd(data-ng-bind='selectedPerson.phonenumber')
+              dd(data-ng-bind='contacts.selectedPerson.phonenumber')
             dt Address
-              dd(data-ng-bind='selectedPerson.address')
+              dd(data-ng-bind='contacts.selectedPerson.address')
             dt City
-              dd(data-ng-bind='selectedPerson.city')
+              dd(data-ng-bind='contacts.selectedPerson.city')
             dt Country
-              dd(data-ng-bind='selectedPerson.country')
+              dd(data-ng-bind='contacts.selectedPerson.country')
 
       pre {{search}}

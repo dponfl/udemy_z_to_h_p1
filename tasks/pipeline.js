@@ -55,6 +55,12 @@ var jsFilesToInject = [
   // Load application modules
   'js/app/**/main.js',
 
+  // Load services
+  'js/app/services/**/*.js',
+
+  // Load controllers
+  'js/app/controllers/**/*.js',
+
   // Load other application files
   'js/app/**/*.js',
 
