@@ -6,4 +6,16 @@ nav.navbar.navbar-inverse.navbar-fixed-top
     .navbar-header
       a(href='/').navbar-brand Some Title
 
-div(data-ng-controller='SomeCtrl').container.main-content
+.container.main-content
+  .row
+    .col-sm-6
+      div(data-ng-controller='ParentController').parent
+        label
+          input(type='text', data-ng-model='name')
+        p {{name}}
+
+        div(data-ng-controller='ChildController').child
+          label
+            input(type='text', data-ng-model='name')
+          button(data-ng-click='reset()') Reset
+          p {{name}}

@@ -1,8 +1,19 @@
 "use strict";
 
 angular.module('app')
-.controller('SomeCtrl', SomeCtrl);
+  .controller('ParentController', ParentController)
+  .controller('ChildController', ChildController);
 
-SomeCtrl.$inject = ['$scope'];
-function SomeCtrl($scope) {
+ParentController.$inject = ['$scope'];
+function ParentController($scope) {
+  $scope.name = 'Parent';
+
+  $scope.reset = function () {
+    $scope.name = 'Parent';
+  }
+}
+
+ChildController.$inject = ['$scope'];
+function ChildController($scope) {
+
 }
