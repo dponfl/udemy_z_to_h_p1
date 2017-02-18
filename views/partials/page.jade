@@ -4,54 +4,56 @@
 nav.navbar.navbar-inverse.navbar-fixed-top
   .container
     .navbar-header
-      a(href='/').navbar-brand List of Things
+      a(href='/').navbar-brand Contacts
 
-div(data-ng-controller='PersonsController').container.main-content
-
-  .row
-    .col-sm-12
-      form.form-inline.well.well-sm
-        span.glyphicon.glyphicon-search
-        .form-group
-          input(type='text',
-            placeholder='Search name...',
-            data-ng-model='search').form-control#name
-
-        span.glyphicon.glyphicon-sort-by-attributes
-        .form-group
-          select(data-ng-model='order').form-control
-            option(value='name') Name (ASC)
-            option(value='-name') Name (DEC)
-            option(value='email') Email (ASC)
-            option(value='-email') Email (DEC)
-
+.container.main-content
 
   .row
-    .col-sm-8
-      table.table.table-bordered
-        tr
-          th
-          th Name
-            span(data-ng-click='order = "name"').glyphicon.glyphicon-menu-up
-            span(data-ng-click='order = "-name"').glyphicon.glyphicon-menu-down
-          th Email
-            span(data-ng-click='order = "email"').glyphicon.glyphicon-menu-up
-            span(data-ng-click='order = "-email"').glyphicon.glyphicon-menu-down
-          th Birthday
-        tr(data-ng-repeat='person in filteredPersons = (persons | filter:sensitiveSearch | orderBy: order)',
-        data-ng-style='{"background-color": (person == selectedPerson ? "lightgrey" : "") }',
-        data-ng-click='selectPerson(person)')
-          td(data-ng-bind= '$index + 1')
-          td(data-ng-bind='person.name')
-          td(data-ng-bind='person.email')
-          td(data-ng-bind='person.birthdate | date: "longDate" ')
+    div(data-ng-controller='PersonsListController').col-sm-8
+      .row
+        .col-sm-12
+          form.form-inline.well.well-sm
+            span.glyphicon.glyphicon-search
+            .form-group
+              input(type='text',
+                placeholder='Search name...',
+                data-ng-model='search').form-control#name
 
-        tr(data-ng-show='filteredPersons.length == 0')
-          td(colspan='4')
-            .alert.alert-info
-              p.text-center No results found for search item '{{search}}'
+            span.glyphicon.glyphicon-sort-by-attributes
+            .form-group
+              select(data-ng-model='order').form-control
+                option(value='name') Name (ASC)
+                option(value='-name') Name (DEC)
+                option(value='email') Email (ASC)
+                option(value='-email') Email (DEC)
+
+      .row
+        .col-sm-12
+          table.table.table-bordered
+            tr
+              th
+              th Name
+                span(data-ng-click='order = "name"').glyphicon.glyphicon-menu-up
+                span(data-ng-click='order = "-name"').glyphicon.glyphicon-menu-down
+              th Email
+                span(data-ng-click='order = "email"').glyphicon.glyphicon-menu-up
+                span(data-ng-click='order = "-email"').glyphicon.glyphicon-menu-down
+              th Birthday
+            tr(data-ng-repeat='person in filteredPersons = (persons | filter:sensitiveSearch | orderBy: order)',
+            data-ng-style='{"background-color": (person == selectedPerson ? "lightgrey" : "") }',
+            data-ng-click='selectPerson(person)')
+              td(data-ng-bind= '$index + 1')
+              td(data-ng-bind='person.name')
+              td(data-ng-bind='person.email')
+              td(data-ng-bind='person.birthdate | date: "longDate" ')
+
+            tr(data-ng-show='filteredPersons.length == 0')
+              td(colspan='4')
+                .alert.alert-info
+                  p.text-center No results found for search item '{{search}}'
+
     .col-sm-4
-      div(data-ng-show='selectedPerson').panel.panel-default
+      div(data-ng-controller='PersonDetailsController').panel.panel-default
         .panel-heading Details
         .panel-body
           dl

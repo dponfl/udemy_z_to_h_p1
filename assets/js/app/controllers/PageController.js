@@ -1,10 +1,16 @@
 "use strict";
 
 angular.module('codecraft')
-.controller('PersonsController', PersonsController);
+.controller('PersonsListController', PersonsListController)
+.controller('PersonDetailsController', PersonDetailsController);
 
-PersonsController.$inject = ['$scope'];
-function PersonsController($scope) {
+PersonDatailsController.$inject = ['$scope'];
+function PersonDetailsController($scope) {
+
+}
+
+PersonsListController.$inject = ['$scope'];
+function PersonsListController($scope) {
 
   $scope.search = '';
   $scope.order = 'email';
