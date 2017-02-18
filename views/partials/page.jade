@@ -11,17 +11,17 @@ nav.navbar.navbar-inverse.navbar-fixed-top
     .col-sm-6
       .root
         label
-          input(type='text', data-ng-model='name')
-        p {{name}}
+          input(type='text', data-ng-model='data.name')
+        p {{data.name}}
 
         .row
           div(data-ng-controller='ParentController').parent
             label
-              input(type='text', data-ng-model='name')
-            p {{name}}
+              input(type='text', data-ng-model='data.name')
+            p {{data.name}}
 
             div(data-ng-controller='ChildController').child
               label
-                input(type='text', data-ng-model='name')
+                input(type='text', data-ng-model='data.name')
               button(data-ng-click='reset()') Reset
-              p {{name}}
+              p {{data.name}}
