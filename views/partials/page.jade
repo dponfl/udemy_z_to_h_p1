@@ -29,7 +29,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top
 
       .row
         .col-sm-12
-          table.table.table-bordered
+          table(infinite-scroll='loadMore()',
+          infinite-scroll-distance='0').table.table-bordered
             tr
               th
               th Name

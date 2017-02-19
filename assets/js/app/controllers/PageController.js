@@ -16,6 +16,11 @@ function PersonsListController($scope, ContactService) {
   $scope.order = 'email';
   $scope.contacts = ContactService;
 
+  $scope.loadMore = function () {
+    console.log('loadMore function is invoked...');
+    $scope.contacts.loadMore();
+  };
+
   $scope.sensitiveSearch = function (person) {
     if ($scope.search) {
       return person.name.indexOf($scope.search) == 0 ||

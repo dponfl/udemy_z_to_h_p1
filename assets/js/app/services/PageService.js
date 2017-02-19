@@ -12,8 +12,6 @@ function Contact($resource) {
 ContactService.$inject = ['Contact'];
 function ContactService(Contact) {
 
-
-
   let self = {
     addPerson: function (person) {
       this.persons.push(person);
@@ -24,16 +22,36 @@ function ContactService(Contact) {
     selectedPerson: null,
     persons: [],
     loadContacts: function () {
-      Contact.get(function (data) {
+      if (self.hasMore && !self.isLoading) {
+        self.isLoading = true;
 
-        //todo: delete
-        console.log('Contact get data:');
-        console.dir(data);
+        let params = {
+          page: self.page
+        };
 
-        angular.forEach(data.results, function (person) {
-          self.persons.push(new Contact(person));
-        })
-      });
+        Contact.get(params, function (data) {
+
+          //todo: delete
+          console.log('Contact get data:');
+          console.dir(data);
+
+          angular.forEach(data.results, function (person) {
+            self.persons.push(new Contact(person));
+          });
+
+          if (!data.next) {
+            self.hasMore = false;
+          }
+
+          self.isLoading = false;
+        });
+      }
+    },
+    loadMore: function () {
+      if (self.hasMore && !self.isLoading) {
+        self.page += 1;
+        self.loadContacts();
+      }
     }
   };
 

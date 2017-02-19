@@ -3,7 +3,8 @@
 (function () {
 
   angular.module('codecraft', [
-    'ngResource'
+    'ngResource',
+    'infinite-scroll'
   ]).config(CodecraftConfig);
 
   CodecraftConfig.$inject = ['$httpProvider', '$resourceProvider'];
