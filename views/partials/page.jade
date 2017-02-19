@@ -40,7 +40,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                 span(data-ng-click='order = "email"').glyphicon.glyphicon-menu-up
                 span(data-ng-click='order = "-email"').glyphicon.glyphicon-menu-down
               th Birthday
-            tr(data-ng-repeat='person in filteredPersons = (contacts.persons | filter:sensitiveSearch | orderBy: order)',
+            tr(data-ng-repeat='person in contacts.persons',
             data-ng-style='{"background-color": (person == contacts.selectedPerson ? "lightgrey" : "") }',
             data-ng-click='contacts.selectedPerson = person')
               td(data-ng-bind= '$index + 1')
@@ -48,7 +48,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
               td(data-ng-bind='person.email')
               td(data-ng-bind='person.birthdate | date: "longDate" ')
 
-            tr(data-ng-show='filteredPersons.length == 0')
+            tr(data-ng-show='contacts.persons.length == 0')
               td(colspan='4')
                 .alert.alert-info
                   p.text-center No results found for search item '{{search}}'
