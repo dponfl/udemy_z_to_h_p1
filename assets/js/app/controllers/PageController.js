@@ -22,6 +22,14 @@ function PersonsListController($scope, ContactService) {
   };
 
   $scope.$watch('search', function (newVal, oldVal) {
-    console.log(newVal);
-  })
+    if (angular.isDefined(newVal)) {
+      $scope.contacts.doSearch(newVal);
+    }
+  });
+
+  $scope.$watch('order', function (newVal, oldVal) {
+    if (angular.isDefined(newVal)) {
+      $scope.contacts.doOrder(newVal);
+    }
+  });
 }

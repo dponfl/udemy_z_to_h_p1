@@ -21,12 +21,29 @@ function ContactService(Contact) {
     isLoading: false,
     selectedPerson: null,
     persons: [],
+    search: null,
+    doSearch: function (search) {
+      self.hasMore = true;
+      self.page = 1;
+      self.persons = [];
+      self.search = search;
+      self.loadContacts();
+    },
+    doOrder: function (order) {
+      self.hasMore = true;
+      self.page = 1;
+      self.persons = [];
+      self.ordering = order;
+      self.loadContacts();
+    },
     loadContacts: function () {
       if (self.hasMore && !self.isLoading) {
         self.isLoading = true;
 
         let params = {
-          page: self.page
+          page: self.page,
+          search: self.search,
+          ordering: self.ordering
         };
 
         Contact.get(params, function (data) {
