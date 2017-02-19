@@ -32,6 +32,8 @@ var jsModFilesToInject = [
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
 
+
+
   // Load jQuery first
   'vendor/jquery/dist/jquery.js',
 
@@ -51,6 +53,9 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   'js/dependencies/**/*.js',
+
+  // Load app configurations
+  'js/app/app_config/**/*.js',
 
   // Load application modules
   'js/app/**/main.js',
