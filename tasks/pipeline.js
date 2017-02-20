@@ -49,6 +49,8 @@ var jsFilesToInject = [
   'vendor/ladda/js/ladda.js',
   'vendor/angular-ladda/dist/angular-ladda.js',
   'vendor/ngInfiniteScroll/build/ng-infinite-scroll.js',
+  'vendor/spin.js/spin.js',
+  'vendor/angular-spinner/dist/angular-spinner.js',
 
   // Load sails.io before everything else
   'js/dependencies/sails.io.js',

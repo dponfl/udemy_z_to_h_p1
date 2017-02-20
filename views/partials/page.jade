@@ -53,6 +53,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                 .alert.alert-info
                   p.text-center No results found for search item '{{search}}'
 
+          div(data-ng-show='contacts.isLoading').spinner
+            span(us-spinner='{redius:8, width:5, length:3, lines:9}')
+
     .col-sm-4
       div(data-ng-controller='PersonDetailsController').panel.panel-default
         .panel-heading Details

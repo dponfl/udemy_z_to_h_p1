@@ -4,7 +4,8 @@
 
   angular.module('codecraft', [
     'ngResource',
-    'infinite-scroll'
+    'infinite-scroll',
+    'angularSpinner'
   ]).config(CodecraftConfig);
 
   CodecraftConfig.$inject = ['$httpProvider', '$resourceProvider'];
