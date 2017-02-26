@@ -6,11 +6,16 @@ angular.module('codecraft')
 
 Contact.$inject = ['$resource'];
 function Contact($resource) {
-  return $resource('https://api.codecraft.tv/samples/v1/contact/:id');
+  return $resource('https://api.codecraft.tv/samples/v1/contact/:id',
+    {id:'@id'},
+    {update: {
+      method: 'PUT'
+    }
+  });
 }
 
-ContactService.$inject = ['Contact'];
-function ContactService(Contact) {
+ContactService.$inject = ['Contact', 'Data'];
+function ContactService(Contact, Data) {
 
   let self = {
     addPerson: function (person) {
@@ -69,6 +74,20 @@ function ContactService(Contact) {
         self.page += 1;
         self.loadContacts();
       }
+    },
+    updateContact: function (person) {
+      console.log('Service Called updateContact...');
+      Contact.update(person);
+    },
+
+    // To one time loading data to localDisk database
+    loadDataToBD: function (data) {
+      let thisData = new Data(data);
+
+      thisData.$save().then(function (data) {
+        console.log('loadDataToBD:$save:data:');
+        console.dir(data);
+      });
     }
   };
 

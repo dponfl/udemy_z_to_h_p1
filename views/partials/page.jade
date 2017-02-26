@@ -6,10 +6,15 @@ nav.navbar.navbar-inverse.navbar-fixed-top
     .navbar-header
       a(href='/').navbar-brand Contacts
 
-.container.main-content
+div(data-ng-controller='PersonsListController').container.main-content
 
   .row
-    div(data-ng-controller='PersonsListController').col-sm-8
+    .col-sm-8
+      .well.well-sm
+        button(data-ng-click='loadData()').btn.btn-success Load data to DB...
+
+  .row
+    .col-sm-8
       .row
         .col-sm-12
           form.form-inline.well.well-sm
@@ -59,20 +64,76 @@ nav.navbar.navbar-inverse.navbar-fixed-top
       div(data-ng-controller='PersonDetailsController').panel.panel-default
         .panel-heading Details
         .panel-body
-          dl
-            dt Name
-              dd(data-ng-bind='contacts.selectedPerson.name')
-            dt Email
-              dd(data-ng-bind='contacts.selectedPerson.email')
-            dt Birthday
-              dd(data-ng-bind='contacts.selectedPerson.birthdate | date:"longDate"')
-            dt Phone
-              dd(data-ng-bind='contacts.selectedPerson.phonenumber')
-            dt Address
-              dd(data-ng-bind='contacts.selectedPerson.address')
-            dt City
-              dd(data-ng-bind='contacts.selectedPerson.city')
-            dt Country
-              dd(data-ng-bind='contacts.selectedPerson.country')
+          form(data-ng-submit='save()', novalidate).form-horizontal
+            .form-group
+              label.col-sm-2.control-label Name
+              .col-sm-10
+                input(type='text',
+                name='name',
+                data-ng-model='contacts.selectedPerson.name',
+                required).form-control
+
+            .form-group
+              label.col-sm-2.control-label Email
+              .col-sm-10
+                input(type='email',
+                name='email',
+                data-ng-model='contacts.selectedPerson.email',
+                required).form-control
+
+            .form-group
+              label.col-sm-2.control-label Photo
+              .col-sm-10
+                input(type='text',
+                name='photo',
+                data-ng-model='contacts.selectedPerson.photo').form-control
+
+            .form-group
+              label.col-sm-2.control-label Sex
+              .col-sm-10
+                select(name='sex',
+                data-ng-model='contacts.selectedPerson.sex',
+                ).form-control
+                  option(value='M') Male
+                  option(value='F') Female
+
+            .form-group
+              label.col-sm-2.control-label Birthday
+              .col-sm-10
+                input(type='text',
+                name='bday',
+                data-ng-model='contacts.selectedPerson.birthdate').form-control
+
+            .form-group
+              label.col-sm-2.control-label Phone
+              .col-sm-10
+                input(type='tel',
+                name='phone',
+                data-ng-model='contacts.selectedPerson.phonenumber').form-control
+
+            .form-group
+              label.col-sm-2.control-label Address
+              .col-sm-10
+                input(type='text',
+                name='address',
+                data-ng-model='contacts.selectedPerson.address').form-control
+
+            .form-group
+              label.col-sm-2.control-label City
+              .col-sm-10
+                input(type='text',
+                name='city',
+                data-ng-model='contacts.selectedPerson.city').form-control
+
+            .form-group
+              label.col-sm-2.control-label Country
+              .col-sm-10
+                input(type='text',
+                name='country',
+                data-ng-model='contacts.selectedPerson.country').form-control
+
+            .buttons
+              button(ladda='contacts.isSaving',
+              type='submit').btn.btn-primary.btn-block Save
 
       pre {{search}}
