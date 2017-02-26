@@ -47,6 +47,7 @@ module.exports = {
     updatedTs: {
       type: 'string'
     },
-  }
+  },
+  tableName: 'contacts'
 };
 

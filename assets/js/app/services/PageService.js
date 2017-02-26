@@ -88,6 +88,27 @@ function ContactService(Contact, Data) {
         console.log('loadDataToBD:$save:data:');
         console.dir(data);
       });
+    },
+    updateDataToBD: function (data) {
+      console.log('updateDataToBD:$update:data received:');
+      console.dir(data);
+      let thisData = Data.find({id_original: data.id, sex: data.sex}, function () {
+        console.log('updateDataToBD:$update:thisData:');
+        console.log('Data length:' + thisData.length);
+        console.dir(thisData);
+
+        if (thisData.length == 1) {
+          let updateRecord = Data.get({id: thisData[0].id}, function () {
+            updateRecord.sex = data.sex;
+
+            updateRecord.$update().then(function (data) {
+              console.log('updateDataToBD:$update:data:');
+              console.dir(data);
+            });
+          });
+        }
+      });
+
     }
   };
 

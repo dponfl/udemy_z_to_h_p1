@@ -9,7 +9,8 @@ function PersonDetailsController($scope, ContactService) {
   $scope.contacts = ContactService;
   
   $scope.save = function () {
-    $scope.contacts.updateContact($scope.contacts.selectedPerson);
+    // $scope.contacts.updateContact($scope.contacts.selectedPerson);
+    $scope.contacts.updateDataToBD($scope.contacts.selectedPerson);
   }
 } // end of PersonDetailsController
 
